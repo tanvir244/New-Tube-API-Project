@@ -1,7 +1,15 @@
 const btnContainer = document.getElementById('btn-container');
 const cardContainer = document.getElementById('card-container');
 const errorElement = document.getElementById('error-element');
+const sortBtn = document.getElementById('sort-btn');
+
 let selectedCategory = 1000;
+let sortByView = false;
+
+sortBtn.addEventListener('click', () => {
+    sortByView = true;
+    fetchDataByCategories(selectedCategory, sortByView);
+})
 
 const fetchCategories = () => {
     const url = 'https://openapi.programming-hero.com/api/videos/categories';
@@ -24,17 +32,30 @@ const fetchCategories = () => {
             })
         })
 }
-const fetchDataByCategories = (categoryID = selectedCategory) => {
+const fetchDataByCategories = (categoryID, sortByView) => {
+    selectedCategory = categoryID;
     const url = `https://openapi.programming-hero.com/api/videos/category/${categoryID}`;
     fetch(url)
         .then((res) => res.json())
         .then(({ data }) => {
+            // ======
+            if(sortByView){
+                data.sort((a, b) => {
+                    const totalViewStrFirst = a.others?.views;
+                    const totalViewStrSecond = b.others?.views;
+                    const totalViewFirstNumber = parseFloat(totalViewStrFirst.replace("k", '')) || 0;
+                    const totalViewSecondNumber = parseFloat(totalViewStrSecond.replace("k", '')) || 0;
+                    return totalViewSecondNumber - totalViewFirstNumber;
+                })
+            }
+            // ======
             if(data.length === 0){
                 errorElement.classList.remove('hidden');
             }
             else{
                 errorElement.classList.add('hidden');
             }
+            // ======
             cardContainer.innerHTML = '';
             data.forEach((video) => {
                 const newCard = document.createElement('div');
@@ -62,4 +83,4 @@ const fetchDataByCategories = (categoryID = selectedCategory) => {
 }
 
 fetchCategories();
-fetchDataByCategories();
+fetchDataByCategories(selectedCategory, sortByView);
