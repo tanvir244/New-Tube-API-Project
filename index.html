@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tube</title>
+    <!-- DaisyUi and Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="w-10/12 mx-auto">
+        <!-- navbar -->
+        <div class="navbar bg-base-100 border-b-2 border-[#E5E7EC]">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>Sort By View</a></li>
+                    </ul>
+                </div>
+                <a href="" class="text-3xl font-bold">New <span class="text-red-600">Tube</span></a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a class="text-base font-semibold bg-[#e5e7eb]">Sort By View</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn bg-slate-700 text-white">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main class="w-10/12 mx-auto space-y-12">
+        <!-- category button -->
+        <section class="flex justify-center items-center">
+            <div id="btn-container" class="mt-4 space-x-1 md:space-x-4">
+
+            </div>
+        </section>
+
+        <!-- video contents -->
+        <section>
+            <!-- errer message -->
+            <div id="error-element" class="hidden mt-24" >
+                <img class="mx-auto" src="image/Icon.png" alt="">
+                <h1 class="text-3xl mt-3 text-slate-600 text-center">Opps!! There are no content available</h1>
+            </div>
+            <!-- contents -->
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer>
+
+    </footer>
+
+    <!-- script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
